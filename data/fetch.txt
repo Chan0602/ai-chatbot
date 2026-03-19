@@ -1,0 +1,59 @@
+Project: Fetch Rewards UX Research
+
+Type: Mobile App UX Research / Consumer Product
+
+Description:
+A UX research project focused on improving the receipt scanning and reward experience in the Fetch Rewards app.
+
+Users:
+- Everyday consumers using receipt scanning for rewards
+- Mobile app users seeking quick and seamless interactions
+
+Problem:
+- Users experienced friction during receipt scanning
+- Unclear feedback and system status during upload
+- Confusing reward redemption flow
+- Lack of clarity in how points are earned and used
+
+My Role:
+UX Researcher + Product Designer
+
+Research Methods:
+- User interviews
+- Usability testing
+- Heuristic evaluation
+- Behavioral observation
+
+Actions:
+- Identified key pain points in the scanning and reward flow
+- Analyzed user behavior during receipt upload process
+- Redesigned interaction flow to reduce confusion
+- Improved feedback and system visibility during scanning
+- Simplified reward understanding and redemption process
+
+Key Features / Improvements:
+- Clearer scanning feedback (loading, success, failure states)
+- Improved onboarding for new users
+- Simplified reward points explanation
+- More intuitive user flow for earning and redeeming rewards
+
+Impact:
+- Reduced user confusion during receipt scanning
+- Improved task completion success rate
+- Increased overall usability and engagement
+- Enhanced clarity of reward system
+
+Skills:
+- UX Research
+- Usability Testing
+- Interaction Design
+- User Flow Optimization
+
+Tools:
+Figma, User Testing Platforms
+
+Keywords:
+mobile app, UX research, usability testing, onboarding, rewards system, user behavior, interaction design
+
+Summary:
+I conducted UX research on the Fetch Rewards app and redesigned key parts of the receipt scanning and reward flow to improve usability and user understanding.

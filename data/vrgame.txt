@@ -1,0 +1,63 @@
+Project: VR Game Experience Design
+
+Type: VR Interaction Design / Game Design / Immersive Experience
+
+Description:
+A virtual reality game project focused on designing immersive interactions and spatial experiences, allowing users to engage with a 3D environment through intuitive physical actions.
+
+Users:
+- Players exploring immersive VR environments
+- Users interacting with 3D objects and game mechanics
+- Individuals seeking engaging and interactive gameplay
+
+Problem:
+- Traditional 2D design does not translate directly to 3D immersive environments
+- Users may feel disoriented in VR spaces
+- Interaction design in VR requires intuitive physical mapping
+- Lack of clear feedback can break immersion
+
+My Role:
+UX Designer / Interaction Designer
+
+Actions:
+- Designed immersive gameplay experience in a 3D environment
+- Defined spatial interaction patterns between user and virtual objects
+- Created intuitive control systems aligned with user physical movements
+- Designed feedback systems to reinforce user actions
+- Focused on reducing user confusion in VR navigation
+- Considered user comfort and cognitive load in immersive environments
+
+Key Features:
+- Immersive 3D environment interaction
+- Physical movement-based controls
+- Real-time feedback for user actions
+- Spatial navigation design
+- Interactive object manipulation
+
+Design Focus:
+- Human-centered interaction in virtual environments
+- Mapping physical actions to digital responses
+- Maintaining immersion through consistent feedback
+- Balancing usability and engagement
+
+Impact:
+- Improved user immersion and engagement in VR gameplay
+- Reduced confusion in spatial navigation
+- Enhanced intuitiveness of interactions
+- Strengthened overall user experience in a 3D environment
+
+Skills:
+- Interaction Design
+- VR / Immersive Design
+- Spatial UX
+- Game Design
+- Human-Computer Interaction
+
+Tools:
+Unity / VR tools / Prototyping tools
+
+Keywords:
+VR, immersive design, spatial interaction, game design, 3D interface, human-computer interaction, virtual reality
+
+Summary:
+I designed a VR game experience focusing on immersive interaction and spatial usability, enabling users to intuitively navigate and interact within a 3D virtual environment.

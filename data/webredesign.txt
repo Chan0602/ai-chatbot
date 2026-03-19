@@ -1,0 +1,57 @@
+Project: Website Redesign Project
+
+Type: Web UX Design / Information Architecture / Design System
+
+Description:
+A redesign of an existing website focused on improving information architecture, usability, and visual consistency through a streamlined design system.
+
+Users:
+- General website visitors
+- Users navigating content-heavy pages
+- Users seeking clear and efficient information access
+
+Problem:
+- Information architecture was unclear and difficult to navigate
+- Content was scattered and not well structured
+- Visual design lacked consistency across pages
+- Users struggled to find key information efficiently
+
+My Role:
+UX Designer
+
+Actions:
+- Conducted analysis of the existing website structure
+- Redesigned the sitemap to simplify navigation
+- Reorganized content into a clearer hierarchy
+- Created a consistent design system for visual and interaction patterns
+- Improved layout structure for better readability and usability
+- Focused on aligning structure with user mental models
+
+Key Features / Improvements:
+- Streamlined sitemap for easier navigation
+- Reimagined information architecture
+- Consistent design system across pages
+- Improved content hierarchy and layout clarity
+- Enhanced usability and visual coherence
+
+Impact:
+- Improved user ability to find information quickly
+- Reduced cognitive load when navigating the site
+- Increased consistency across the website experience
+- Strengthened overall usability and structure
+
+Skills:
+- Information Architecture
+- UX Design
+- Design System
+- Web Design
+- Usability Optimization
+
+Tools:
+Figma
+
+Keywords:
+website redesign, information architecture, sitemap, design system, usability, navigation, web UX
+
+Summary:
+I redesigned a website by restructuring its information architecture and creating a consistent design system to improve navigation, usability, and overall user experience.

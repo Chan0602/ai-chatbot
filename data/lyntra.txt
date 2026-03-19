@@ -1,0 +1,62 @@
+Project: Lyntra AI Study Planner
+
+Type: AI-powered Product / EdTech / UX Design
+
+Description:
+An AI-powered study planning tool designed to help students organize their learning, manage time effectively, and stay on track with academic goals.
+
+Users:
+- Students managing multiple courses and deadlines
+- Users who struggle with time management and planning
+- Individuals seeking personalized study support
+
+Problem:
+- Students often lack structured planning for studying
+- Difficulty prioritizing tasks across multiple courses
+- Low motivation and inconsistency in study habits
+- Existing tools are static and not personalized
+
+My Role:
+Product Designer (UX + AI Interaction Design)
+
+Actions:
+- Designed an AI-driven study planning experience
+- Created user flows for generating personalized study plans
+- Defined interaction patterns between user and AI assistant
+- Structured task breakdown and scheduling logic
+- Designed interfaces for tracking progress and adjusting plans
+- Focused on reducing cognitive load for users
+
+Key Features:
+- AI-generated personalized study plans
+- Dynamic task breakdown based on user goals
+- Progress tracking and adaptive scheduling
+- Conversational interaction with AI assistant
+- Smart prioritization of tasks
+
+AI Component:
+- AI interprets user goals and generates structured plans
+- Adapts recommendations based on user progress
+- Provides guidance and feedback through interaction
+
+Impact:
+- Improved users’ ability to manage study schedules
+- Reduced overwhelm in planning complex workloads
+- Increased consistency in study habits
+- Enhanced personalization compared to static planners
+
+Skills:
+- Product Design
+- AI Interaction Design
+- UX Design
+- User Flow Design
+- Human-AI Interaction
+
+Tools:
+Figma, Prototyping Tools
+
+Keywords:
+AI product, study planner, edtech, personalization, task management, AI assistant, productivity, learning tools
+
+Summary:
+I designed an AI-powered study planner that helps students create personalized learning plans, manage tasks, and stay consistent through adaptive AI guidance.

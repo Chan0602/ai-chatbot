@@ -1,0 +1,63 @@
+Project: MAPWA Practicum Platform Redesign
+
+Type: Information System / Educational Platform / UX Design
+
+Description:
+A redesign of the MAPWA (Practicum Web App) system used by over 200 MA-LIS students at UW–Madison to manage practicum opportunities, applications, and onboarding.
+
+Users:
+- Graduate students (MA-LIS program)
+- Practicum coordinators
+- Site supervisors
+
+Problem:
+- Students struggled to navigate practicum requirements and opportunities
+- Information was scattered across different pages and documents
+- The onboarding and application process lacked clarity
+- Limited visibility into partner organizations and project details
+
+My Role:
+UX Designer + Researcher
+
+Research Methods:
+- Contextual inquiry
+- User interviews with students
+- Workflow analysis of practicum process
+- Stakeholder feedback (program coordinators)
+
+Actions:
+- Mapped the end-to-end practicum journey for students
+- Identified pain points in onboarding, application, and tracking
+- Redesigned information architecture to centralize key content
+- Created a clearer navigation system for opportunities and requirements
+- Designed structured partner/project listings for easier comparison
+- Improved onboarding flow for new users
+
+Key Features / Improvements:
+- Centralized practicum information in one platform
+- Structured partner directory with clear project details
+- Improved navigation for browsing opportunities
+- Streamlined onboarding and application workflow
+- Clearer status tracking for practicum progress
+
+Impact:
+- Improved clarity for 200+ students navigating practicum requirements
+- Reduced confusion in application and onboarding process
+- Increased efficiency in finding and comparing opportunities
+- Enhanced overall user experience of the MAPWA system
+
+Skills:
+- UX Research
+- Information Architecture
+- System Design
+- User Journey Mapping
+- Interaction Design
+
+Tools:
+Figma, Research Documentation Tools
+
+Keywords:
+education platform, information system, onboarding, workflow design, information architecture, student experience, dashboard, platform redesign
+
+Summary:
+I redesigned the MAPWA practicum platform to improve how students discover opportunities, understand requirements, and navigate the onboarding process, impacting over 200 users.

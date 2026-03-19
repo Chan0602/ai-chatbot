@@ -38,7 +38,7 @@ export default function Home() {
       <div style={{ marginBottom: 20 }}>
         {messages.map((m, i) => (
           <div key={i} style={{ marginBottom: 10 }}>
-            <b>{m.role}:</b> {m.text}
+            <b>{m.role}:</b> <div dangerouslySetInnerHTML={{ __html: m.text }} />
           </div>
         ))}
       </div>

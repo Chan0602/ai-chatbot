@@ -1,0 +1,51 @@
+Project: Oshkosh Dashboard
+
+Type: B2B Data Visualization / Dashboard Design
+
+Description:
+A visualized dashboard for truck performance monitoring, designed to help users efficiently analyze and compare vehicle data.
+
+Users:
+- Developers
+- Testers
+
+Problem:
+- Users struggled to compare signals and analyze performance data efficiently
+- Important warnings were difficult to identify quickly
+- Existing interface lacked clarity and efficient data visualization
+
+My Role:
+UX Designer
+
+Actions:
+- Designed a dashboard system tailored for two key user roles: developers and testers
+- Created data comparison features to allow users to compare signals over time
+- Designed visual hierarchy to highlight critical warnings and system status
+- Improved navigation and interaction flow for faster data access
+- Focused on clarity and usability in complex data environments
+
+Key Features:
+- Compare two signals over time
+- Identify critical warnings quickly
+- Role-based interaction (developer vs tester workflows)
+- Data visualization for performance monitoring
+
+Impact:
+- Reduced time needed to analyze truck performance data
+- Improved efficiency for developers and testers
+- Enhanced clarity in complex data environments
+
+Skills:
+- UX Design
+- Data Visualization
+- Dashboard Design
+- User Flow Design
+
+Tools:
+Figma
+
+Keywords:
+dashboard, data visualization, truck monitoring, signal comparison, B2B system, developer tools, tester workflow
+
+Summary:
+I designed a B2B dashboard that helps developers and testers efficiently analyze truck performance data through visualization and signal comparison.
