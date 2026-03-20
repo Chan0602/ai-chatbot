@@ -116,7 +116,6 @@ export default function Home() {
             width: 64,
             height: 64,
             background: "#e8b4d0",
-            boxShadow: "0px 25px 50px 0px rgba(0,0,0,0.25)",
           }}
         >
           {/* Chat bubble icon */}
