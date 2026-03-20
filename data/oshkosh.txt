@@ -1,6 +1,6 @@
 Project: Oshkosh Dashboard
 
-Type: B2B Data Visualization / Dashboard Design
+Type: Saas B2B Data Visualization / Dashboard Design
 
 Description:
 A visualized dashboard for truck performance monitoring, designed to help users efficiently analyze and compare vehicle data.
