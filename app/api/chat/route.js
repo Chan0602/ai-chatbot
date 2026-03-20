@@ -42,7 +42,7 @@ export async function POST(req) {
         matchedProjects.push("fetch");
       }
 
-      if (lowerMsg.includes("dashboard") || lowerMsg.includes("truck") || lowerMsg.includes("oshkosh") || lowerMsg.includes("saas") || lowerMsg.includes("b2b")) {
+      if (lowerMsg.includes("dashboard") || lowerMsg.includes("truck") || lowerMsg.includes("oshkosh") || lowerMsg.includes("saas") || lowerMsg.includes("b2b") || lowerMsg.includes("ux design") || lowerMsg.includes("ux")) {
         if (file.includes("oshkosh")) {
           context += content + "\n";
           matchedProjects.push("oshkosh");
@@ -63,7 +63,7 @@ export async function POST(req) {
         }
       }
 
-      if (lowerMsg.includes("website") || lowerMsg.includes("redesign") || lowerMsg.includes("webredesign")) {
+      if (lowerMsg.includes("website") || lowerMsg.includes("redesign") || lowerMsg.includes("webredesign") || lowerMsg.includes("ux design") || lowerMsg.includes("ux")) {
         if (file.includes("webredesign")) {
           context += content + "\n";
           matchedProjects.push("webredesign");
@@ -127,7 +127,8 @@ ${context}
 Rules:
 - Answer in first person ("I")
 - Be conversational, warm, and natural — like talking to a real person, not an AI
-- Be concise — keep responses to 2-3 sentences max
+- Be concise — 2-3 short sentences per paragraph, 1-2 paragraphs max
+- Separate paragraphs with a blank line (\n\n)
 - No bullet points or lists, just natural short sentences
 - When relevant, connect answers to your projects or experiences
 - Occasionally weave in your interests if it feels natural (not forced)
@@ -148,30 +149,48 @@ Rules:
     let reply =
       data?.choices?.[0]?.message?.content || "⚠️ AI没有返回内容";
 
-    // 🔗 根据回复内容检测提到的项目，自动附上链接
-    const projectKeywords = {
-      fetch: ["fetch"],
-      oshkosh: ["oshkosh"],
-      mapwa: ["mapwa"],
-      lyntra: ["lyntra"],
-      webredesign: ["web redesign", "webredesign", "website redesign"],
-      vrgame: ["vr game", "vrgame", "vr"],
-      photography: ["photography", "photo", "photographer"],
+    // 🔗 根据用户提问意图，精准附上对应链接
+    const intentLinks = {
+      fetch:       ["fetch", "ux research", "research"],
+      oshkosh:     ["oshkosh", "dashboard", "truck", "saas", "b2b", "ux design", "ux"],
+      mapwa:       ["mapwa", "student", "management system"],
+      lyntra:      ["lyntra", "ai tool", "study", "learning"],
+      webredesign: ["website redesign", "web redesign", "webredesign", "website", "redesign", "ux design", "ux"],
+      vrgame:      ["vr", "vr game", "immersive", "game"],
     };
 
-    const lowerReply = reply.toLowerCase();
-    const mentionedProjects = Object.entries(projectKeywords)
-      .filter(([, keywords]) => keywords.some(kw => lowerReply.includes(kw)))
+    const intentLinksExtra = {
+      photography: ["yourself", "about you", "who are you", "background", "interest", "photo"],
+    };
+
+    const linkedProjects = Object.entries(intentLinks)
+      .filter(([, keywords]) => keywords.some(kw => lowerMsg.includes(kw)))
       .map(([key]) => key);
 
-    if (mentionedProjects.length > 0) {
-      const links = mentionedProjects
-        .map(p => `\n🔗 <a href="${projectLinks[p]}" target="_blank">View ${p} project</a>`)
-        .join("");
-      reply += "\n" + links;
-    }
+    const linkedExtras = Object.entries(intentLinksExtra)
+      .filter(([, keywords]) => keywords.some(kw => lowerMsg.includes(kw)))
+      .map(([key]) => key);
 
-    return Response.json({ reply });
+    const allLinks = [...linkedProjects, ...linkedExtras];
+
+    const projectMeta = {
+      fetch:       { label: "Fetch",         tags: ["UX Research", "Mobile"],        image: "/images/fetch.jpg" },
+      oshkosh:     { label: "Oshkosh",        tags: ["SaaS B2B", "Dashboard"],        image: "/images/oshkosh.jpg" },
+      mapwa:       { label: "Mapwa",          tags: ["UX Design", "Web"],             image: "/images/mapwa.jpg" },
+      lyntra:      { label: "Lyntra",         tags: ["AI", "UX Design"],              image: "/images/lyntra.jpg" },
+      webredesign: { label: "Website Redesign", tags: ["Web", "UX Design"],           image: "/images/webredesign.jpg" },
+      vrgame:      { label: "VR Game",        tags: ["VR", "UX Design"],              image: "/images/vrgame.jpg" },
+      photography: { label: "Photography",   tags: ["Photography"],                   image: "/images/photography.jpg" },
+    };
+
+    const links = allLinks.map(p => ({
+      label: projectMeta[p]?.label || p,
+      url:   projectLinks[p],
+      image: projectMeta[p]?.image || null,
+      tags:  projectMeta[p]?.tags || [],
+    }));
+
+    return Response.json({ reply, links });
 
   } catch (error) {
     console.error(error);
