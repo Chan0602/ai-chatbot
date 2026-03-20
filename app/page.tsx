@@ -116,6 +116,7 @@ export default function Home() {
             width: 64,
             height: 64,
             background: "#e8b4d0",
+            boxShadow: "none",
           }}
         >
           {/* Chat bubble icon */}
@@ -135,9 +136,9 @@ export default function Home() {
         <div
           className="fixed bottom-6 right-6 flex flex-col overflow-hidden rounded-3xl bg-white"
           style={{
-            width: 384,
+            width: 360,
             height: 600,
-            boxShadow: "0px 25px 50px -12px rgba(0,0,0,0.25)",
+            boxShadow: "none",
             animation: closing
               ? "popOut 0.3s cubic-bezier(0.55, 0, 1, 0.45) forwards"
               : "popIn 0.35s cubic-bezier(0.34, 1.2, 0.64, 1)",
