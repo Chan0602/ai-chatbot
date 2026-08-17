@@ -1,6 +1,5 @@
 "use client";
 import { useState, useRef, useEffect } from "react";
-import { X, ArrowUp } from "lucide-react";
 
 function renderLine(line: string, key: number) {
   const parts = line.split(/(<a\s+href=["'][^"']*["'][^>]*>.*?<\/a>)/gi);
@@ -19,7 +18,7 @@ function renderLine(line: string, key: number) {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="underline opacity-90 hover:opacity-100"
-                style={{ color: "#c2185b" }}
+                style={{ color: "#e8b4d0" }}
               >
                 {label}
               </a>
@@ -52,13 +51,6 @@ const QUICK_PROMPTS = [
   "UX research",
 ];
 
-const SLEEP_FRAMES = [
-  "/images/cat/cat-sleep-1.png",
-  "/images/cat/cat-sleep-2.png",
-  "/images/cat/cat-sleep-3.png",
-  "/images/cat/cat-sleep-4.png",
-];
-
 export default function Home() {
   const [open, setOpen] = useState(false);
   const [closing, setClosing] = useState(false);
@@ -68,7 +60,6 @@ export default function Home() {
     setTimeout(() => {
       setOpen(false);
       setClosing(false);
-      setCatHover(false);
     }, 300);
   };
   const [input, setInput] = useState("");
@@ -106,16 +97,14 @@ export default function Home() {
     }
   };
 
-  const [catHover, setCatHover] = useState(false);
-  const [sleepFrame, setSleepFrame] = useState(0);
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Enter" && !e.shiftKey) {
+      e.preventDefault();
+      sendMessage();
+    }
+  };
 
-  useEffect(() => {
-    if (open || catHover) return;
-    const id = setInterval(() => {
-      setSleepFrame((f) => (f + 1) % SLEEP_FRAMES.length);
-    }, 700);
-    return () => clearInterval(id);
-  }, [open, catHover]);
+  const [catHover, setCatHover] = useState(false);
 
   return (
     <>
@@ -145,13 +134,11 @@ export default function Home() {
             onClick={() => setOpen(true)}
             onMouseEnter={() => setCatHover(true)}
             onMouseLeave={() => setCatHover(false)}
-            onMouseDown={() => setCatHover(true)}
-            onTouchStart={() => setCatHover(true)}
             aria-label="Open chat with the site cat"
             aria-expanded={false}
             className="flex items-end justify-center active:scale-90"
             style={{
-              width: 132,
+              width: 88,
               height: 88,
               background: "transparent",
               border: "none",
@@ -159,14 +146,13 @@ export default function Home() {
             }}
           >
             {/* Cat image itself is the entry point, no container */}
-            {/* cat-sitting.png stands in for the "up" pose until that asset is provided */}
             <img
-              src={catHover ? "/images/cat/cat-sitting.png" : SLEEP_FRAMES[sleepFrame]}
+              src={catHover ? "/images/cat/cat-sitting.png" : "/images/cat/cat-lying.png"}
               alt=""
               draggable={false}
               style={{
-                width: catHover ? 88 : 132,
-                height: catHover ? 88 : 60,
+                width: 88,
+                height: 88,
                 objectFit: "contain",
                 pointerEvents: "none",
                 transition: "transform 0.2s ease-out",
@@ -180,39 +166,70 @@ export default function Home() {
       {/* Chat popup */}
       {open && (
         <div
-          className="fixed bottom-6 right-6 flex flex-col overflow-hidden bg-[#ffffff] rounded-[26px_22px_24px_20px]"
+          className="fixed bottom-6 right-6 flex flex-col overflow-hidden rounded-3xl bg-white"
           style={{
-            width: 320,
-            height: 520,
-            maxHeight: "80vh",
-            boxShadow: "0 12px 40px rgba(0, 0, 0, 0.18)",
+            width: 360,
+            height: 600,
+            boxShadow: "none",
             animation: closing
               ? "popOut 0.3s cubic-bezier(0.55, 0, 1, 0.45) forwards"
               : "popIn 0.35s cubic-bezier(0.34, 1.2, 0.64, 1)",
           }}
         >
           {/* Header */}
-          <div className="shrink-0 flex justify-end px-4 pt-4 pb-2">
+          <div
+            className="shrink-0 flex items-center justify-between px-6 py-4"
+            style={{ background: "linear-gradient(169deg, #3d5d47 0%, #2a4032 100%)" }}
+          >
+            <div className="flex items-center gap-3">
+              <div
+                className="flex items-center justify-center rounded-full shrink-0 overflow-hidden"
+                style={{ width: 40, height: 40, background: "#e8b4d0" }}
+              >
+                <img
+                  src="/images/cat/cat-sitting.png"
+                  alt=""
+                  draggable={false}
+                  style={{ width: 30, height: 30, objectFit: "contain", pointerEvents: "none" }}
+                />
+              </div>
+              <div>
+                <p className="text-white font-semibold text-[18px] leading-tight tracking-tight">
+                  Design Assistant
+                </p>
+                <p className="text-[12px] leading-tight" style={{ color: "rgba(255,255,255,0.8)" }}>
+                  Always here to help
+                </p>
+              </div>
+            </div>
+            {/* Close */}
             <button
               onClick={closeChat}
-              className="w-9 h-9 flex items-center justify-center rounded-full bg-[#ffffff] hover:bg-[#efe9dc] transition-colors"
+              className="close-btn flex items-center justify-center rounded-full"
+              style={{ width: 32, height: 32 }}
               aria-label="Close"
             >
-              <X className="w-4 h-4 text-[#1a1a1a]" strokeWidth={2.5} />
+              <svg className="close-icon" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <path d="M5 5L15 15M15 5L5 15" stroke="white" strokeWidth="1.5" strokeLinecap="round" />
+              </svg>
             </button>
           </div>
 
           {/* Messages */}
-          <div className="flex-1 overflow-y-auto px-4 py-5 flex flex-col gap-4 scrollbar-none">
+          <div
+            className="flex-1 overflow-y-auto px-6 py-4 flex flex-col gap-3 scrollbar-none"
+            style={{ background: "#f8f8f8" }}
+          >
             {/* Greeting */}
-            <div className="flex justify-start">
+            <div className="flex items-end">
               <div
-                className="max-w-[82%] px-5 py-3 text-[#4a4a4a] rounded-[26px_24px_26px_22px] bg-white border border-[#e2e2e2]"
+                className="rounded-tl-2xl rounded-tr-2xl rounded-br-2xl rounded-bl-md px-4 py-3 max-w-[75%]"
+                style={{ background: "#3d5d47" }}
               >
-                <p className="text-[17px] leading-snug">
+                <p className="text-white text-[14px] leading-snug">
                   Hi there! 👋 I&apos;m your design assistant. Ask me anything about my background, skills, or projects :)
                 </p>
-                <p className="text-[12px] mt-1 text-[#9a9a9a]">
+                <p className="text-[11px] mt-1" style={{ color: "rgba(255,255,255,0.6)" }}>
                   {new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}
                 </p>
               </div>
@@ -222,17 +239,19 @@ export default function Home() {
               m.role === "user" ? (
                 <div key={i} className="flex justify-end">
                   <div
-                    className="max-w-[82%] px-5 py-3 text-[#4a4a4a] rounded-[26px_24px_26px_22px] bg-[#f9ddd2]"
+                    className="rounded-tl-2xl rounded-tr-2xl rounded-bl-2xl rounded-br-md px-4 py-3 max-w-[75%]"
+                    style={{ background: "#e8b4d0" }}
                   >
-                    <p className="text-[17px] leading-snug">{m.text}</p>
+                    <p className="text-[#2a4032] text-[14px] leading-snug">{m.text}</p>
                   </div>
                 </div>
               ) : (
                 <div key={i} className="flex flex-col items-start gap-2">
                   <div
-                    className="max-w-[82%] px-5 py-3 text-[#4a4a4a] rounded-[26px_24px_26px_22px] bg-white border border-[#e2e2e2]"
+                    className="rounded-tl-2xl rounded-tr-2xl rounded-br-2xl rounded-bl-md px-4 py-3 max-w-[75%]"
+                    style={{ background: "#3d5d47" }}
                   >
-                    <div className="text-[17px] leading-snug">{renderWithLinks(m.text)}</div>
+                    <p className="text-white text-[14px] leading-snug">{renderWithLinks(m.text)}</p>
                   </div>
                   {m.links && m.links.length > 0 && (
                     <div className="flex flex-col gap-3 w-[268px]">
@@ -242,10 +261,17 @@ export default function Home() {
                           href={link.url}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="project-card no-underline block bg-white rounded-[18px_16px_18px_14px] overflow-hidden border border-[#e2e2e2]"
+                          className="project-card no-underline block"
+                          style={{
+                            background: "#fff",
+                            border: "1px solid #e8e8e8",
+                            borderRadius: 14,
+                            overflow: "hidden",
+                            boxShadow: "0 4px 6px -1px rgba(0,0,0,0.08), 0 2px 4px -2px rgba(0,0,0,0.06)",
+                          }}
                         >
                           {/* Image */}
-                          <div style={{ height: 136, background: "#f3f0e7", overflow: "hidden" }}>
+                          <div style={{ height: 136, background: "#f3f4f6", overflow: "hidden" }}>
                             {link.image ? (
                               <img
                                 src={link.image}
@@ -253,24 +279,30 @@ export default function Home() {
                                 style={{ width: "100%", height: "100%", objectFit: "cover" }}
                               />
                             ) : (
-                              <div className="w-full h-full flex items-center justify-center" style={{ background: "#ffe1ec" }}>
+                              <div className="w-full h-full flex items-center justify-center" style={{ background: "#e8b4d0" }}>
                                 <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
-                                  <path d="M4 24l8-8 5 5 5-6 6 9H4Z" fill="#1a1a1a" opacity="0.3" />
-                                  <circle cx="21" cy="11" r="3" fill="#1a1a1a" opacity="0.3" />
+                                  <path d="M4 24l8-8 5 5 5-6 6 9H4Z" fill="#3d5d47" opacity="0.3" />
+                                  <circle cx="21" cy="11" r="3" fill="#3d5d47" opacity="0.3" />
                                 </svg>
                               </div>
                             )}
                           </div>
                           {/* Label + tags */}
                           <div className="px-4 py-3 flex flex-col gap-2">
-                            <span className="text-[16px] text-[#1a1a1a]">{link.label}</span>
+                            <span className="text-[13px] font-semibold" style={{ color: "#2a4032" }}>
+                              {link.label}
+                            </span>
                             {link.tags && link.tags.length > 0 && (
                               <div className="flex gap-2 flex-wrap">
                                 {link.tags.map((tag, ti) => (
                                   <span
                                     key={ti}
-                                    className="px-2 py-0.5 rounded-full text-[12px] text-[#4a4a4a] bg-[#f3f0e7]"
+                                    className="flex items-center gap-1 px-2 py-0.5 rounded-full text-[11px]"
+                                    style={{ background: "#f3f4f6", color: "#6b7280" }}
                                   >
+                                    <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
+                                      <path d="M1 5.5L1.5 2H5L8.5 5.5L5.5 8.5L2 5Z" stroke="#9ca3af" strokeWidth="0.8" fill="none" strokeLinejoin="round" />
+                                    </svg>
                                     {tag}
                                   </span>
                                 ))}
@@ -286,9 +318,10 @@ export default function Home() {
             )}
 
             {loading && (
-              <div className="flex justify-start">
+              <div className="flex items-end">
                 <div
-                  className="px-5 py-3 rounded-[26px_24px_26px_22px] bg-white border border-[#e2e2e2]"
+                  className="rounded-tl-2xl rounded-tr-2xl rounded-br-2xl rounded-bl-md px-4 py-3"
+                  style={{ background: "#3d5d47" }}
                 >
                   <div className="flex gap-1 items-center h-4">
                     {[0, 1, 2].map((i) => (
@@ -298,7 +331,7 @@ export default function Home() {
                         style={{
                           width: 6,
                           height: 6,
-                          background: "#9a9a9a",
+                          background: "rgba(255,255,255,0.7)",
                           animation: `bounce 1.2s ${i * 0.2}s infinite`,
                         }}
                       />
@@ -311,12 +344,16 @@ export default function Home() {
           </div>
 
           {/* Quick prompts */}
-          <div className="shrink-0 flex gap-2 px-4 py-3 overflow-x-auto scrollbar-none">
+          <div
+            className="shrink-0 flex gap-2 px-6 py-3 overflow-x-auto scrollbar-none border-t"
+            style={{ borderColor: "#f3f4f6" }}
+          >
             {QUICK_PROMPTS.map((p) => (
               <button
                 key={p}
                 onClick={() => sendMessage(p)}
-                className="shrink-0 px-4 py-2 text-[15px] text-[#1a1a1a] rounded-[16px_14px_16px_12px] bg-[#ffe1ec] hover:bg-[#ffd0e2] transition-colors"
+                className="shrink-0 rounded-full px-4 py-1.5 text-[12px] font-medium transition-opacity hover:opacity-80"
+                style={{ background: "#e8b4d0", color: "#3d5d47" }}
               >
                 {p}
               </button>
@@ -324,27 +361,33 @@ export default function Home() {
           </div>
 
           {/* Input */}
-          <form
-            onSubmit={(e) => {
-              e.preventDefault();
-              sendMessage();
-            }}
-            className="shrink-0 flex items-center gap-3 px-4 py-4 bg-[#ffffff]"
+          <div
+            className="shrink-0 flex items-center gap-2 px-4 py-4 border-t bg-white"
+            style={{ borderColor: "#f3f4f6" }}
           >
             <input
               value={input}
               onChange={(e) => setInput(e.target.value)}
+              onKeyDown={handleKeyDown}
               placeholder="Ask me anything..."
-              className="flex-1 px-4 py-3 text-[16px] text-[#1a1a1a] placeholder:text-[#9a9a9a] bg-[#ffffff] rounded-[20px_18px_20px_16px] outline-none border border-[#e2e2e2]"
+              className="flex-1 rounded-full px-4 py-3 text-[15px] outline-none border-2 transition-colors"
+              style={{ background: "#f9f9f9", borderColor: "#e5e5e5", color: "#0a0a0a" }}
             />
             <button
-              type="submit"
-              className="w-12 h-12 shrink-0 flex items-center justify-center rounded-full bg-[#c8f0d2] hover:bg-[#b2e8bf] transition-colors"
+              onClick={() => sendMessage()}
+              className="shrink-0 flex items-center justify-center rounded-full transition-opacity hover:opacity-80"
+              style={{
+                width: 48,
+                height: 48,
+                background: "linear-gradient(135deg, #3d5d47 0%, #2a4032 100%)",
+              }}
               aria-label="Send"
             >
-              <ArrowUp className="w-5 h-5 text-[#1a1a1a]" strokeWidth={2.5} />
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <path d="M18 10L3 3L6.5 10L3 17L18 10Z" fill="white" strokeLinejoin="round" />
+              </svg>
             </button>
-          </form>
+          </div>
         </div>
       )}
 
@@ -370,6 +413,9 @@ export default function Home() {
         .project-card { transition: all 0.2s ease; cursor: pointer; }
         .project-card:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(0,0,0,0.12) !important; }
         .project-card:active { transform: translateY(0); }
+        .close-icon { transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1); }
+        .close-btn:hover .close-icon { transform: rotate(90deg); }
+        .close-btn:active .close-icon { transform: rotate(90deg) scale(0.85); }
       `}</style>
     </>
   );
