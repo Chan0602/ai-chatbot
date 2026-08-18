@@ -79,6 +79,10 @@ export default function Home() {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages, loading]);
 
+  useEffect(() => {
+    window.parent.postMessage({ type: "yilin-chatbot-open-state", open }, "*");
+  }, [open]);
+
   const sendMessage = async (text?: string) => {
     const msg = text ?? input;
     if (!msg.trim()) return;
