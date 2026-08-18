@@ -76,6 +76,11 @@ export default function Home() {
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    if (window.parent === window) return;
+    window.parent.postMessage({ type: "yilin-chatbot-open-state", open }, "*");
+  }, [open]);
+
+  useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages, loading]);
 

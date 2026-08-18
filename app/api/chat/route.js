@@ -15,8 +15,6 @@ export async function POST(req) {
   try {
     const { message } = await req.json();
 
-    console.log("KEY:", process.env.OPENAI_API_KEY);
-
     const folderPath = path.join(process.cwd(), "data");
     const files = fs.readdirSync(folderPath);
 
