@@ -49,7 +49,6 @@ const QUICK_PROMPTS = [
   "Tell me about yourself",
   "SaaS B2B",
   "UX design",
-  "UX research",
 ];
 
 const SLEEP_FRAMES = [
