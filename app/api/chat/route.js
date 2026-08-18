@@ -3,7 +3,6 @@ import path from "path";
 export const runtime = "nodejs";
 
 const projectLinks = {
-  fetch: "https://yilinchen.design/fetch",
   oshkosh: "https://www.yilinchen.design/oshkosh.html",
   mapwa: "https://www.yilinchen.design/mapwa.html",
   lyntra: "https://www.yilinchen.design/lyntra.html",
@@ -35,11 +34,6 @@ export async function POST(req) {
           context += content + "\n";
           matchedProjects.push("about");
         }
-      }
-
-      if (lowerMsg.includes("fetch") && file.includes("fetch")) {
-        context += content + "\n";
-        matchedProjects.push("fetch");
       }
 
       if (lowerMsg.includes("dashboard") || lowerMsg.includes("truck") || lowerMsg.includes("oshkosh") || lowerMsg.includes("saas") || lowerMsg.includes("b2b") || lowerMsg.includes("ux design") || lowerMsg.includes("ux")) {
@@ -152,7 +146,6 @@ Rules:
 
     // 🔗 根据用户提问意图，精准附上对应链接
     const intentLinks = {
-      fetch:       ["fetch", "ux research", "research"],
       oshkosh:     ["oshkosh", "dashboard", "truck", "saas", "b2b", "ux design", "ux"],
       mapwa:       ["mapwa", "student", "management system"],
       lyntra:      ["lyntra", "ai tool", "study", "learning"],
@@ -175,7 +168,6 @@ Rules:
     const allLinks = [...linkedProjects, ...linkedExtras];
 
     const projectMeta = {
-      fetch:       { label: "Fetch",         tags: ["UX Research", "Mobile"],        image: "/images/fetch.jpg" },
       oshkosh:     { label: "Oshkosh",        tags: ["SaaS B2B", "Dashboard"],        image: "/images/oshkosh.jpg" },
       mapwa:       { label: "Mapwa",          tags: ["UX Design", "Web"],             image: "/images/mapwa.jpg" },
       lyntra:      { label: "Lyntra",         tags: ["AI", "UX Design"],              image: "/images/lyntra.jpg" },
